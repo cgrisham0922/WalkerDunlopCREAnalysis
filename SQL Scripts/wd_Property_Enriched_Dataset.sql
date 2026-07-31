@@ -1,3 +1,12 @@
+With ocp_cte as (
+    SELECT
+        state_code,
+        CAST(housing_units_occupied_count AS DECIMAL(18,4))
+        / NULLIF(housing_units_occupancy_status_total_count, 0)
+            AS occupancy_rate_per_state
+      FROM dbo.demographics_US
+  )
+
 SELECT
     /* Property Attributes */
       p.property_name                                    AS property_name
@@ -13,6 +22,12 @@ SELECT
     , p.occupancy                                        AS occupancy_rate
     , p.latitude                                         AS property_latitude
     , p.longitude                                        AS property_longitude
+    , ocp.occupancy_rate_per_state                       AS occupancy_rate_per_state
+    ,case 
+        when p.occupancy > ocp.occupancy_rate_per_state then 'Above'
+        when p.occupancy < ocp.occupancy_rate_per_state then 'Below'
+        else 'N/A'
+     end                                                 AS property_occupancy_vs_state_indicator
 
     /* Loan Attributes */
     , p.loan_purpose_acquisition_refinance               AS loan_purpose
@@ -111,5 +126,8 @@ INNER JOIN dbo.states_codes_mapping   AS s WITH (NOLOCK)
     ON p.property_state = s.state_code
 INNER JOIN dbo.demographics_us        AS d WITH (NOLOCK)
     ON s.state_id = d.state_code
+INNER JOIN ocp_cte                    AS ocp WITH(NOLOCK)
+    ON d.state_code = ocp.state_code
 ORDER BY
     p.uw_noi DESC;
+
