@@ -1,68 +1,195 @@
-# \## \*\*Commercial Real Estate Property Analysis Dashboard Project\*\*
+# Commercial Real Estate Property Analysis Dashboard
 
-# 
+## Overview
 
-# \*\*Objective:\*\* - Project related files to support Loan Servicing profitability analysis based on performance metrics such as Cap Rate, Rent Affordability and Net Operating/Cash Flow metrics. 
+This project contains all supporting artifacts for a **Commercial Real Estate (CRE) Loan Servicing Profitability Analysis Dashboard** developed in Power BI. The dashboard enables users to evaluate property performance and profitability using key underwriting and operational metrics such as:
 
-# 
+- Capitalization Rate (Cap Rate)
+- Rent Affordability
+- Net Operating Income (NOI)
+- Cash Flow Performance
+- Per Unit Financial Metrics
 
-# \*\*Project Contents:\*\* 
+The solution combines source data, SQL transformations, business requirements, and Power BI reporting into a single end-to-end analytics workflow.
 
-# 
+---
 
-# &#x20;- \*Business Requirement Documentation (BRD)\* - provided to demonstrate dashboard purpose, stakeholder goals, data definitions and visual wireframe design for each report item. 
+## Project Objectives
 
-# &#x20;- \*SQL Scripts\* - data query language to obtain needed data for the report. This produces the main dataset for the Power BI report, and includes calculations that are defined in the BRD documentation. 
+Provide stakeholders with an interactive analytics platform that supports loan servicing and property profitability analysis through standardized performance metrics, visual reporting, and actionable insights.
 
-# &#x20;- \*Excel Export Enriched Dataset\* - the output of the SQL Script file; nulls are eliminated from this dataset for consumption by end users or testing tools. 
+---
 
-# &#x20;- \*Power BI Files\* - this contins the main PBIX report file to product the dashboard. The dashboard contains 3 tabs: Dashboard Summary, Dashboard Details and Dashboard Descriptions. 
+## Project Contents
 
-# &#x20;- \*Initial Source Data\* - this contains the 3 main CSV data files that were used to work into the SQL Scripts and into the Power BI report. 
+### 📋 Business Requirements Documentation (BRD)
 
-# 
+The BRD outlines:
 
-# \*\*Project Assumptions:\*\* 
+- Business objectives
+- Stakeholder requirements
+- Metric definitions
+- Data mapping and assumptions
+- Report wireframes and dashboard design specifications
 
-# 
+### 🗄️ SQL Scripts
 
-# &#x20;- Data is current and accurate from each source at the time the data is loaded. 
+SQL scripts used to:
 
-# &#x20;- Data will be provided and stored to be loaded on a frequent basis. 
+- Extract and transform source data
+- Calculate business metrics defined in the BRD
+- Generate the reporting dataset consumed by Power BI
 
-# &#x20;- Metrics are based on Underwriting data (Cap Rate, Per Unit calculations). 
+### 📊 Enriched Dataset (Excel Export)
 
-# &#x20;- No Row Level Security on any report item was added, nor was it requried at project origin. 
+The processed dataset generated from the SQL scripts.
 
-# 
+Features include:
 
-# \*\*Data Refresh and Processing:\*\* 
+- Cleansed data
+- Reduced null values
+- Analysis-ready structure
+- Support for validation and testing activities
 
-# 
+### 📈 Power BI Files
 
-# &#x20;- \*Option 1\* - CSV files are the source; we will need to land each CSV on a shareable content provided (SharePoint / One Drive) to set up automatic semantic model refresh from Power BI Server. 
+Contains the primary Power BI report (`.pbix`) including:
 
-# &#x20;- \*Option 2\* - ETL/ELT consumption with help of data integration/engineering team. If possible, add metadata to each record on when record was loaded, to help with historical trending. 
+1. **Dashboard Summary**
+2. **Dashboard Details**
+3. **Dashboard Descriptions**
 
-# 
+The report provides both executive-level summaries and property-level analysis.
 
-# \*\*Report Updates and Distribution:\*\* 
+### 📁 Source Data
 
-# 
+Original CSV files used during development and modeling.
 
-# &#x20;- \*Report Model Update\* - weekly refresh via Power BI server; report will refresh data @ 2AM CST each week (Sunday). 
+These datasets serve as the foundational source for:
 
-# &#x20;- \*Report Access\* - will deploy report to W\&D report portal to include with all existing reports for user access. We will follow stated AD Group access for report access. 
+- SQL transformations
+- Data validation
+- Report development
 
-# &#x20;- \*Report Subscriptions\* - if needed, report can be delivered to end users upon request, in PDF form. 
+---
 
-# 
+## Project Assumptions
 
-# \*\*Future Enhancements: \*\* 
+The following assumptions apply to this solution:
 
-# 
+- Source data is accurate and current at the time of ingestion.
+- New data will be received and stored on a recurring basis.
+- Financial metrics are derived primarily from underwriting data.
+- Cap Rate and Per Unit calculations follow documented business rules.
+- Row-Level Security (RLS) was not required within the original project scope.
 
-# &#x20;- \*Row Level Security (RLS)\* - ensure no user is seeing data they are not allowed to see. Confirm this with Account management to course correct if needed. 
+---
 
-# &#x20;- \*Power App Integration\* - work with AI tools to find 3 actionable or items of interest to automatically send to Account Management, along with link to report. Use Power Apps and AI agent creation to achieve this milestone. 
+## Data Refresh & Processing Options
 
+### Option 1: File-Based Refresh
+
+Use CSV files as the primary data source.
+
+Process:
+
+1. Store CSV files in a shared location (SharePoint or OneDrive).
+2. Connect Power BI to the hosted files.
+3. Configure scheduled semantic model refreshes through Power BI Service.
+
+### Option 2: ETL / ELT Integration
+
+Integrate the solution with enterprise data engineering processes.
+
+Benefits:
+
+- Automated ingestion pipelines
+- Improved governance
+- Data lineage tracking
+- Historical snapshot capabilities
+
+**Recommendation:** Add record load timestamps to support trend analysis and historical reporting.
+
+---
+
+## Report Distribution & Maintenance
+
+### 🔄 Report Refresh Schedule
+
+- Refresh Frequency: Weekly
+- Refresh Day: Sunday
+- Refresh Time: 2:00 AM CST
+
+### 🔐 Report Access
+
+The report will be deployed to the Walker & Dunlop reporting portal and secured through Active Directory (AD) group memberships.
+
+### 📧 Report Subscriptions
+
+Reports can be distributed upon request through Power BI subscriptions or exported to PDF format for stakeholders.
+
+---
+
+## Future Enhancements
+
+### Row-Level Security (RLS)
+
+Implement security roles to ensure users only have access to authorized data.
+
+Potential activities:
+
+- Define security requirements with Account Management
+- Establish property- or region-based access controls
+- Validate role assignments through user acceptance testing
+
+### Power Apps & AI Integration
+
+Extend the dashboard with automated workflows and intelligent insights.
+
+Potential capabilities include:
+
+- AI-generated recommendations
+- Automated alerting for performance anomalies
+- Property opportunity identification
+- Power Apps integration for workflow management
+- Automated notifications to Account Management teams
+
+---
+
+## Technology Stack
+
+| Technology | Purpose |
+|------------|---------|
+| Power BI | Dashboard Development & Visualization |
+| SQL Server / SQL Scripts | Data Transformation & Business Logic |
+| Excel | Exported Analysis Dataset |
+| CSV Files | Source Data Storage |
+| SharePoint / OneDrive | File Hosting & Scheduled Refresh |
+| Power Apps | Future Workflow Integration |
+| AI Services | Future Insight Automation |
+
+---
+
+## Repository Structure
+
+```text
+├── BRD/
+│   └── Business Requirements Documentation
+├── SQL/
+│   └── SQL Scripts
+├── Data/
+│   ├── Source CSV Files
+│   └── Enriched Dataset Export
+├── PowerBI/
+│   └── PBIX Report Files
+└── README.md
+```
+
+---
+
+## Author
+
+Commercial Real Estate Property Analysis Dashboard Project
+Chris Grisham July 2026
+
+Power BI • SQL • Loan Servicing Analytics • Property Performance Reporting
